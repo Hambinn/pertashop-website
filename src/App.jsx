@@ -1,11 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import React from 'react'
+import {BrowserRouter , Route, Link, Routes } from 'react-router-dom'
 import './App.css'
+import Login from './components/Login'
+import Home from './pages/Home'
+import { AuthProvider } from './Auth'
+import PrivateRoutes from './PrivateRoutes'
 
 export default function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <AuthProvider>
+    <BrowserRouter>
+            <Routes>
+              <Route exact path='/login' element={<Login/>} />
+              <Route element={<PrivateRoutes/>}>
+                <Route exact path='/' element={<Home/>} />
+              </Route>
+            </Routes>
+    </BrowserRouter>
+    </AuthProvider>
   )
 }
