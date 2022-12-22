@@ -6,6 +6,8 @@ import Home from "./pages/Home";
 import { AuthProvider } from "./Auth";
 import PrivateRoutes from "./PrivateRoutes";
 import "react-toastify/dist/ReactToastify.css";
+import Navbar from "./components/Navbar";
+import InputPenjualan from "./pages/InputPenjualan";
 export default function App() {
   return (
     // <AuthProvider>
@@ -14,6 +16,7 @@ export default function App() {
         <Route exact path="/login" element={<Login />} />
         {/* <Route element={<PrivateRoutes />}> */}
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/inputpenjualan" element={<InputPenjualan />} />
         {/* </Route> */}
       </Routes>
     </BrowserRouter>

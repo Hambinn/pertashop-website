@@ -39,9 +39,9 @@ const Home = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-900">
+    <div className="flex min-h-screen bg-white">
       <div className="flex-1 flex items-center justify-center">
-        <div className="w-[22%] min-w-min text-white align-text-top">
+        <div className="w-[22%] min-w-min text-black align-text-top">
           <h1>Home</h1>
           <button onClick={logout}>Log Out</button>
         </div>
