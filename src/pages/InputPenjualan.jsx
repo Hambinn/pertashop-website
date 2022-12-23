@@ -2,9 +2,13 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { useState } from "react";
 import axios from "axios";
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
+
 function InputPenjualan() {
+  const [startDate, setStartDate] = useState(new Date());
   const [values, setValues] = useState({
-    tanggal: "",
+    tanggal: startDate.toISOString().slice(0, 10),
     meteranAwal: "",
     meteranAkhir: "",
     penjualanBukanMember: "",
@@ -42,14 +46,11 @@ function InputPenjualan() {
           </h1>
           <form action="" className="flex flex-col gap-y-2 ">
             <label className="font-semibold text-base">Tanggal</label>
-            <input
-              type="text"
-              name="Tanggal"
-              id="Tanggal"
+            <DatePicker
               className="border-3 py-3 px-2  text-black border-secondary focus:border-primary focus:border-3 rounded"
-              onChange={(e) =>
-                setValues({ ...values, tanggal: e.target.value })
-              }
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              dateFormat="dd/MM/yyyy"
             />
             <label className="font-semibold text-base">Meteran Awal</label>
             <input
