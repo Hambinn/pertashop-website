@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import { useState } from "react";
-
+import axios from "axios";
 function InputPenjualan() {
   const [values, setValues] = useState({
     tanggal: "",
@@ -13,9 +13,23 @@ function InputPenjualan() {
     stik: "",
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(values);
+    try {
+      const { data } = await axios.post(
+        "http://localhost:3000/inputpenjualan",
+        {
+          ...values,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
