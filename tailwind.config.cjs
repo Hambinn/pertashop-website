@@ -7,6 +7,9 @@ module.exports = {
         primary: "#065666",
         secondary: "#10E0E0",
       },
+      borderWidth: {
+        3: "3px",
+      },
     },
   },
   plugins: [],
