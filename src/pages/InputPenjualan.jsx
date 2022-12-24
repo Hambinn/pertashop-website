@@ -1,9 +1,11 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
+import { useEffect } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 function InputPenjualan() {
   const [startDate, setStartDate] = useState(new Date());
@@ -15,11 +17,30 @@ function InputPenjualan() {
     penjualanDiantar: "",
     penjualanMember: "",
     stik: "",
+    userId: "",
   });
+
+  useEffect(() => {
+    const getUserId = async () => {
+      const { data } = await axios.post(
+        "http://localhost:3000/checkinput",
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      setValues({ ...values, userId: data.idUser.toString() });
+    };
+    getUserId();
+  }, []);
+
+  const formRef = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(values);
+
+    formRef.current.reset();
+
     try {
       const { data } = await axios.post(
         "http://localhost:3000/inputpenjualan",
@@ -30,10 +51,11 @@ function InputPenjualan() {
           withCredentials: true,
         }
       );
-      console.log(data);
+      console.log(values);
     } catch (err) {
       console.log(err);
     }
+    toast.success("Input Penjualan Berhasil", { theme: "dark" });
   };
 
   return (
@@ -44,7 +66,7 @@ function InputPenjualan() {
           <h1 className="text-3xl font-semibold text-primary mt-14 mb-8">
             Input Penjualan
           </h1>
-          <form action="" className="flex flex-col gap-y-2 ">
+          <form action="" className="flex flex-col gap-y-2 " ref={formRef}>
             <label className="font-semibold text-base">Tanggal</label>
             <DatePicker
               className="border-3 py-3 px-2  text-black border-secondary focus:border-primary focus:border-3 rounded"
@@ -122,6 +144,7 @@ function InputPenjualan() {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 }
