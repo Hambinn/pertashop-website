@@ -54,7 +54,7 @@ export default function Login() {
           if (username) generateError(username);
           else if (password) generateError(password);
         } else {
-          navigate("/penjualan");
+          navigate("/penjualanoperator");
         }
       }
     } catch (err) {
