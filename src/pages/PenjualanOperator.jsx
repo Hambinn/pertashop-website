@@ -1,11 +1,12 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavbarOperator";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, Navigate } from "react-router";
 import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
-function Penjualan() {
+
+function PenjualanOperator() {
   const [matrix, setMatrix] = useState(null);
   const [cookies, setCookie, removeCookie] = useCookies([]);
   const navigate = useNavigate();
@@ -105,4 +106,4 @@ function Penjualan() {
   );
 }
 
-export default Penjualan;
+export default PenjualanOperator;
