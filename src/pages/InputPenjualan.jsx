@@ -9,6 +9,7 @@ import { toast, ToastContainer } from "react-toastify";
 
 function InputPenjualan() {
   const [startDate, setStartDate] = useState(new Date());
+  const tanggalSekarang = new Date().getTime();
   const [values, setValues] = useState({
     tanggal: startDate.toISOString().slice(0, 10),
     meteranAwal: "",
@@ -18,6 +19,8 @@ function InputPenjualan() {
     penjualanMember: "",
     stik: "",
     userId: "",
+    shift: "1",
+    penjualanId: tanggalSekarang,
   });
 
   useEffect(() => {
@@ -134,7 +137,16 @@ function InputPenjualan() {
               className="border-3 py-3 px-2  text-black border-secondary focus:border-primary focus:border-3 rounded"
               onChange={(e) => setValues({ ...values, stik: e.target.value })}
             />
-
+            <label className="font-semibold text-base">STIK</label>
+            <select
+              id="shift"
+              name="shift"
+              className="border-3 py-3 px-2  text-black border-secondary focus:border-primary focus:border-3 rounded"
+              onChange={(e) => setValues({ ...values, shift: e.target.value })}
+            >
+              <option value="1">Shift 1</option>
+              <option value="2">Shift 2</option>
+            </select>
             <button
               className=" hover:shadow-xl transition duration-300 text-primary py-2 rounded-lg text-base block bg-secondary font-semibold w-[20%] mt-6"
               onClick={handleSubmit}

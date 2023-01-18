@@ -10,7 +10,7 @@ function Navbar() {
   };
 
   const penjualan = () => {
-    navigate("/penjualan");
+    navigate("/penjualanoperator");
   };
 
   return (
