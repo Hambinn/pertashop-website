@@ -52,6 +52,10 @@ function PenjualanOperator() {
     navigate("/inputpenjualan");
   };
 
+  const editPenjualan = (idPenjualan) => {
+    navigate("/editpenjualan", { state: { idPenjualan } });
+  };
+
   return (
     <>
       <Navbar />
@@ -92,7 +96,10 @@ function PenjualanOperator() {
                 <td className="px-4 py-2 border">{item[5]}</td>
                 <td className="px-4 py-2 border">{item[6]}</td>
                 <td className="px-4 py-2 border  justify-center flex">
-                  <button className="bg-secondary text-white px-4 py-2 rounded-lg ">
+                  <button
+                    className="bg-secondary text-white px-4 py-2 rounded-lg"
+                    onClick={editPenjualan(item[9])}
+                  >
                     Edit
                   </button>
                 </td>
