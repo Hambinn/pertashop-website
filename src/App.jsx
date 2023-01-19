@@ -10,6 +10,9 @@ import Navbar from "./components/NavbarOperator";
 import InputPenjualan from "./pages/InputPenjualan";
 import PenjualanOperator from "./pages/PenjualanOperator";
 import PenjualanManager from "./pages/PenjualanManager";
+import InputTerimaBBM from "./pages/InputTerimaBBM";
+import TerimaBBM from "./pages/TerimaBBM";
+
 export default function App() {
   return (
     // <AuthProvider>
@@ -21,6 +24,9 @@ export default function App() {
         <Route exact path="/inputpenjualan" element={<InputPenjualan />} />
         <Route exact path="/penjualanoperator" element={<PenjualanOperator />} />
         <Route exact path="/penjualanmanager" element={<PenjualanManager />} />
+        <Route exact path="/inputterimabbm" element={<InputTerimaBBM />} />
+        <Route exact path="/terimabbm" element={<TerimaBBM />} />
+        
         {/* </Route> */}
       </Routes>
     </BrowserRouter>
