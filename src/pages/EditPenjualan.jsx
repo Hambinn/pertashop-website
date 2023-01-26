@@ -67,7 +67,7 @@ function EditPenjualan() {
       <div className="flex-1 flex  items-start justify-start ml-20">
         <div className="w-[25%] min-w-min text-primary">
           <h1 className="text-3xl font-semibold text-primary mt-14 mb-8">
-            Input Penjualan
+            Edit Penjualan
           </h1>
           <form action="" className="flex flex-col gap-y-2 " ref={formRef}>
             <label className="font-semibold text-base">Tanggal</label>

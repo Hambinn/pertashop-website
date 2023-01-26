@@ -61,6 +61,8 @@ function InputPenjualan() {
     toast.success("Input Penjualan Berhasil", { theme: "dark" });
   };
 
+  const changeTanggal = (e) => {};
+
   return (
     <>
       <Navbar />
@@ -74,7 +76,12 @@ function InputPenjualan() {
             <DatePicker
               className="border-3 py-3 px-2  text-black border-secondary focus:border-primary focus:border-3 rounded"
               selected={startDate}
-              onChange={(date) => setStartDate(date)}
+              onChange={(date) =>
+                setValues({
+                  ...values,
+                  tanggal: date.toISOString().slice(0, 10),
+                })
+              }
               dateFormat="dd/MM/yyyy"
             />
             <label className="font-semibold text-base">Meteran Awal</label>

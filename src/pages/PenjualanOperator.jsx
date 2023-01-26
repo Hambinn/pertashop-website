@@ -52,9 +52,9 @@ function PenjualanOperator() {
     navigate("/inputpenjualan");
   };
 
-  const editPenjualan = (idPenjualan) => {
-    navigate("/editpenjualan", { state: { idPenjualan } });
-  };
+  // const editPenjualan = (idPenjualan) => {
+  //   navigate("/editpenjualan", { state: { idPenjualan } });
+  // };
 
   return (
     <>
@@ -98,7 +98,7 @@ function PenjualanOperator() {
                 <td className="px-4 py-2 border  justify-center flex">
                   <button
                     className="bg-secondary text-white px-4 py-2 rounded-lg"
-                    onClick={editPenjualan(item[9])}
+                    onClick={() => console.log(item[7])}
                   >
                     Edit
                   </button>
