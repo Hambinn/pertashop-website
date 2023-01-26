@@ -59,6 +59,118 @@ function InputPenjualan() {
       console.log(err);
     }
     toast.success("Input Penjualan Berhasil", { theme: "dark" });
+
+    if (values.shift === "2"){
+      const tanggal = values.tanggal;
+      let sheet = "";
+      switch (startDate.getMonth()) {
+        case 0:
+            sheet = "Januari-" + startDate.getFullYear().toString();
+            break;
+        case 1:
+            sheet = "Februari-" + startDate.getFullYear().toString();
+            break;
+        case 2:
+            sheet = "Maret-" + startDate.getFullYear().toString();
+            break;
+        case 3:
+            sheet = "April-" + startDate.getFullYear().toString();
+            break;
+        case 4:
+            sheet = "Mei-" + startDate.getFullYear().toString();
+            break;
+        case 5:
+            sheet = "Juni-" + startDate.getFullYear().toString();
+            break;
+        case 6:
+            sheet = "Juli-" + startDate.getFullYear().toString();
+            break;
+        case 7:
+            sheet = "Agustus-" + startDate.getFullYear().toString();
+            break;
+        case 8:
+            sheet = "September-" + startDate.getFullYear().toString();
+            break;
+        case 9:
+            sheet = "Oktober-" + startDate.getFullYear().toString();
+            break;
+        case 10:
+            sheet = "November-" + startDate.getFullYear().toString();
+            break;
+        case 11:
+            sheet = "Desember-" + startDate.getFullYear().toString();
+            break;
+      }
+      let terimaBBM = 0;
+      try{
+        console.log(tanggal);
+        const response = await axios.get("http://localhost:3000/getterimabbm",
+                        { headers: {"tanggal": tanggal }
+                        }
+                        );
+        terimaBBM = response.data.value;
+        console.log(terimaBBM);
+      } catch (err) {
+        console.log(err);
+      }
+
+      let tera = 0;
+      let stanAwal = 0;
+      let penjualanJerigen = 0;
+      try{
+        const response = await axios.get("http://localhost:3000/getshiftawal",
+                        {headers: { "tanggal": tanggal }
+                        }
+                        );
+        const shiftAwal = response.data[0];
+        stanAwal = shiftAwal[1];
+        penjualanJerigen = Number(values.penjualanDiantar) + Number(shiftAwal[4]);
+      } catch (err) {
+        console.log(err);
+      }
+      let stanAkhir = values.meteranAkhir;
+
+      let stikAwalCm = 0;
+      let yesterday = startDate;
+      yesterday.setDate(yesterday.getDate() - 1);
+      yesterday = yesterday.toISOString().slice(0, 10);
+      try{
+        const response = await axios.get("http://localhost:3000/getstikawal",
+                        { headers: {"tanggal": yesterday}
+                        }
+                        );
+        const dayBefore = response.data[0];
+        stikAwalCm = dayBefore[6];
+      } catch (err) {
+        console.log(err);
+      }
+
+      let stikAkhirCm = values.stik;
+      let userId = values.userId;
+
+      try{
+        const { data } = await axios.post(
+          "http://localhost:3000/inputbulanan",
+          {
+            tanggal,
+            sheet,
+            terimaBBM,
+            tera,
+            stanAwal,
+            stanAkhir,
+            stikAwalCm,
+            stikAkhirCm,
+            penjualanJerigen,
+            userId
+          },
+          {
+            withCredentials: true,
+          }
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    }
   };
 
   const changeTanggal = (e) => {};
@@ -145,7 +257,7 @@ function InputPenjualan() {
               className="border-3 py-3 px-2  text-black border-secondary focus:border-primary focus:border-3 rounded"
               onChange={(e) => setValues({ ...values, stik: e.target.value })}
             />
-            <label className="font-semibold text-base">STIK</label>
+            <label className="font-semibold text-base">Shift</label>
             <select
               id="shift"
               name="shift"

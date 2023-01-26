@@ -70,15 +70,6 @@ function PenjualanManager() {
         };
         verifyUser();
 
-        // const data = {
-        //     month: month,
-        // }
-        // const fetchData = async () => {
-        //     const response = await axios.post("http://localhost:3000/penjualanmanager", data);
-        //     setMatrix(response.data.values);
-        // };
-        // fetchData();
-
         const getMonth = async () => {
             const response = await axios.get("http://localhost:3000/sheetslist");
             setListMonth(response.data);
