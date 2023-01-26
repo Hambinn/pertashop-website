@@ -76,12 +76,13 @@ function InputPenjualan() {
             <DatePicker
               className="border-3 py-3 px-2  text-black border-secondary focus:border-primary focus:border-3 rounded"
               selected={startDate}
-              onChange={(date) =>
+              onChange={function (date) {
+                setStartDate(date);
                 setValues({
                   ...values,
                   tanggal: date.toISOString().slice(0, 10),
-                })
-              }
+                });
+              }}
               dateFormat="dd/MM/yyyy"
             />
             <label className="font-semibold text-base">Meteran Awal</label>
