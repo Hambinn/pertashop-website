@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/NavbarOperator";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, Navigate } from "react-router";
+import { useNavigate, Navigate, createSearchParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -52,9 +52,9 @@ function PenjualanOperator() {
     navigate("/inputpenjualan");
   };
 
-  // const editPenjualan = (idPenjualan) => {
-  //   navigate("/editpenjualan", { state: { idPenjualan } });
-  // };
+  const editPenjualan = (idPenjualan) => {
+    navigate("/editpenjualan", { state: { idPenjualan } });
+  };
 
   return (
     <>
@@ -98,7 +98,7 @@ function PenjualanOperator() {
                 <td className="px-4 py-2 border  justify-center flex">
                   <button
                     className="bg-secondary text-white px-4 py-2 rounded-lg"
-                    onClick={() => console.log(item[7])}
+                    onClick={() => editPenjualan(item[9])}
                   >
                     Edit
                   </button>

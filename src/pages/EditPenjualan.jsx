@@ -6,10 +6,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import { useLocation } from "react-router-dom";
 
 function EditPenjualan() {
   const [startDate, setStartDate] = useState(new Date());
   const tanggalSekarang = new Date().getTime();
+  const location = useLocation();
   const [values, setValues] = useState({
     tanggal: startDate.toISOString().slice(0, 10),
     meteranAwal: "",
