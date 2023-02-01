@@ -101,6 +101,37 @@ function InputPenjualan() {
             sheet = "Desember-" + startDate.getFullYear().toString();
             break;
       }
+
+      if (startDate.getDate().toString() === "1"){
+        try{
+          const { data } = await axios.post(
+            "http://localhost:3000/addnewsheet",
+            {
+              sheet,
+            },
+            {
+              withCredentials: true,
+            }
+          );
+        } catch (err) {
+          console.log(err);
+        }
+      }
+
+      try{
+        const { data } = await axios.post(
+          "http://localhost:3000/addnewvaluesheet",
+          {
+            sheet,
+          },
+          {
+            withCredentials: true,
+          }
+        );
+      } catch (err) {
+        console.log(err);
+      }
+
       let terimaBBM = 0;
       try{
         console.log(tanggal);
