@@ -82,7 +82,6 @@ function PenjualanOperator() {
                 Penjualan Member
               </th>
               <th className="px-4 py-2 border bg-secondary">STIK</th>
-              <th className="px-4 py-2 border bg-secondary"></th>
             </tr>
           </thead>
           <tbody>
@@ -95,14 +94,6 @@ function PenjualanOperator() {
                 <td className="px-4 py-2 border">{item[4]}</td>
                 <td className="px-4 py-2 border">{item[5]}</td>
                 <td className="px-4 py-2 border">{item[6]}</td>
-                <td className="px-4 py-2 border  justify-center flex">
-                  <button
-                    className="bg-secondary text-white px-4 py-2 rounded-lg"
-                    onClick={() => editPenjualan(item[9])}
-                  >
-                    Edit
-                  </button>
-                </td>
               </tr>
             ))}
           </tbody>
