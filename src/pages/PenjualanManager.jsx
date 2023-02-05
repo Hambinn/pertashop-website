@@ -89,10 +89,7 @@ function PenjualanManager() {
                 setMatrix(response.data.values);
             };
             fetchData();
-            console.log("Sebelum: " + month)
             setMonth(e.target.value);
-            console.log("Sesudah: " + data.month);
-            console.log(matrix);
         }
 
     return (
