@@ -45,9 +45,10 @@ function BiayaOperasional() {
     };
     fetchData();
   }
-//   const inputBiayaOperasional = () => {
-//     navigate("/inputpenjualan");
-//   };
+
+  const inputBiayaOperasional = () => {
+    navigate("/inputbiayaoperasional");
+  };
 
   return (
     <>
@@ -55,7 +56,7 @@ function BiayaOperasional() {
       <div className="flex flex-col min-h-screen mx-20">
         <button
           className="bg-secondary text-white px-4 py-2 rounded-lg w-[20%] mt-20"
-        //   onClick={inputBiayaOperasional}
+          onClick={inputBiayaOperasional}
         >
           Input Biaya Operasional
         </button>

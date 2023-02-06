@@ -14,6 +14,7 @@ import InputTerimaBBM from "./pages/InputTerimaBBM";
 import TerimaBBM from "./pages/TerimaBBM";
 import EditPenjualan from "./pages/EditPenjualan";
 import BiayaOperasional from "./pages/BiayaOperasional";
+import InputBiayaOperasional from "./pages/InputBiayaOperasional";
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
         <Route exact path="/terimabbm" element={<TerimaBBM />} />
         <Route exact path="/editpenjualan" element={<EditPenjualan />} />
         <Route exact path="/biayaoperasional" element={<BiayaOperasional />} />
+        <Route exact path="/inputbiayaoperasional" element={<InputBiayaOperasional />} />
 
         {/* </Route> */}
       </Routes>

@@ -15,10 +15,10 @@ function Navbar() {
       <a href="#" className="p-2 px-4 text-white font-bold text-xl">
         Dashboard
       </a>
-      <a href="#" className="p-2 px-4 text-white font-bold text-xl">
+      <a href="/penjualanmanager" className="p-2 px-4 text-white font-bold text-xl">
         Penjualan
       </a>
-      <a href="#" className="p-2 px-4 text-white font-bold text-xl">
+      <a href="/biayaoperasional" className="p-2 px-4 text-white font-bold text-xl">
         Biaya Operasional
       </a>
       <a href="#" className="p-2 px-4 text-white font-bold text-xl">
